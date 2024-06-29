@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DemoConsoleSqlServer2
-build_property.ProjectDir = D:\Git\ItAcademy2024_turma20\entityframework\DemoConsoleSqlServer2\
+build_property.ProjectDir = d:\Git\ItAcademy2024_turma20\entityframework\DemoConsoleSqlServer2\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
