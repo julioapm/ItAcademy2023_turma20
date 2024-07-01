@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "xSwkye2cs8lKpey5QK1g+ivsHcAxcalcrLlZYBFmcu0=",
+  "Source": "DemoWebServiceSqlServer",
+  "BasePath": "_content/DemoWebServiceSqlServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
