@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DemoWebServiceSqlServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+807ebcc35508c212808a02fe16e1dee608788f4c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df6e2912d0fbe6d65766091d5e4b9ae2cf83b33f")]
 [assembly: System.Reflection.AssemblyProductAttribute("DemoWebServiceSqlServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DemoWebServiceSqlServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
