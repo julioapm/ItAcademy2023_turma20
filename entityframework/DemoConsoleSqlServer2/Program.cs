@@ -1,4 +1,5 @@
 ﻿using DemoConsoleSqlServer2.Models;
+using Microsoft.EntityFrameworkCore;
 
 using (var contexto = new BloggingContext())
 {
@@ -21,9 +22,28 @@ using (var contexto = new BloggingContext())
     }
     contexto.SaveChanges();
     */
-    var umPost = contexto.Posts.Find(1);
-    Console.WriteLine(umPost.Id);
-    Console.WriteLine(umPost.Titulo);
-    Console.WriteLine(umPost.Conteudo);
-    Console.WriteLine(umPost.Blog.URL);
+    /*
+    //Eager loading
+    var blogs = contexto.Blogs
+                    .Include(b => b.Posts)
+                    .ToList();
+    foreach (var blog in blogs)
+    {
+        Console.WriteLine($"Id={blog.Id} posts:");
+        foreach (var post in blog.Posts)
+        {
+            Console.WriteLine($"{post.Titulo}");
+        }
+    }
+    */
+    //Explicit loading
+    var umBlog = contexto.Blogs.Single(b => b.Id == 1);
+    contexto.Entry(umBlog)
+            .Collection(b => b.Posts)
+            .Load();
+    Console.WriteLine($"Id={umBlog.Id} posts:");
+    foreach (var post in umBlog.Posts)
+    {
+        Console.WriteLine($"{post.Titulo}");
+    }
 }
