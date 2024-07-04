@@ -2,6 +2,7 @@ namespace DemoLojinha.Services;
 
 using System.Threading.Tasks;
 using DemoLojinha.Database;
+using DemoLojinha.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class ClienteRepositoryEF : IClienteRepository
@@ -11,6 +12,11 @@ public class ClienteRepositoryEF : IClienteRepository
     public ClienteRepositoryEF(LojinhaContext contexto)
     {
         this.contexto = contexto;
+    }
+
+    public Task<Cliente?> ConsultaPorIdAsync(int id)
+    {
+        return contexto.Clientes.Where(c => c.Id == id).SingleOrDefaultAsync();
     }
 
     public Task<bool> ConsultaSeExiste(int id)

@@ -1,5 +1,6 @@
 using DemoLojinha.Database;
 using DemoLojinha.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoLojinha.Services;
 
@@ -17,5 +18,14 @@ public class PedidoRepositoryEF : IPedidoRepository
         await contexto.Pedidos.AddAsync(pedido);
         await contexto.SaveChangesAsync();
         return pedido;
+    }
+
+    public Task<Pedido?> ConsultarPorIdAsync(int id)
+    {
+        return contexto.Pedidos
+            .Where(p => p.Id == id)
+            .Include(p => p.Cliente)
+            .Include(p => p.Produtos)
+            .SingleOrDefaultAsync();
     }
 }

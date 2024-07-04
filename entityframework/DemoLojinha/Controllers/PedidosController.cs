@@ -20,12 +20,24 @@ public class PedidosController : ControllerBase
         this.pedidoRepository = pedidoRepository;
     }
 
+    //GET .../api/v1/pedidos/{id}
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<PedidoRespostaDTO>> GetPorId(int id)
+    {
+        var pedido = await pedidoRepository.ConsultarPorIdAsync(id);
+        if (pedido == null)
+        {
+            return NotFound();
+        }
+        return PedidoRespostaDTO.DeModelParaDto(pedido);
+    }
+
     //POST .../api/v1/pedidos
     [HttpPost]
-    public async Task<ActionResult<String>> PostNovoPedido(CarrinhoRequisicaoDTO carrinho)
+    public async Task<ActionResult<PedidoRespostaDTO>> PostNovoPedido(CarrinhoRequisicaoDTO carrinho)
     {
-        var clienteExiste = await clienteRepository.ConsultaSeExiste(carrinho.IdCliente.GetValueOrDefault());
-        if (!clienteExiste)
+        var cliente = await clienteRepository.ConsultaPorIdAsync(carrinho.IdCliente.GetValueOrDefault());
+        if (cliente == null)
         {
             return BadRequest();
         }
@@ -53,6 +65,10 @@ public class PedidosController : ControllerBase
             Items = itensPedido
         };
         var novoPedido = await pedidoRepository.AdicionarAsync(pedido);
-        return "Ok";
+        return CreatedAtAction(
+            nameof(GetPorId),
+            new { id = novoPedido.Id },
+            PedidoRespostaDTO.DeModelParaDto(novoPedido)
+        );
     }
 }
