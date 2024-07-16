@@ -53,6 +53,7 @@ fs.readFile('dados.json', 'utf-8', (error, json) => {
 console.log('fim');
 */
 
+/*
 //Lendo arquivo de forma assíncrona com promise
 console.log('início');
 readFile('dados.json','utf8')
@@ -65,4 +66,18 @@ readFile('dados.json','utf8')
         console.error((error as Error).name);
         console.error((error as Error).message);
     });
+console.log('fim');
+*/
+
+//Lendo arquivo de forma assíncrona com await
+console.log('início');
+try {
+    const json = await readFile('dados.json', 'utf8');
+    const obj = JSON.parse(json);
+    console.log(obj);
+} catch (error) {
+    console.error('Falha de leitura/processamento do arquivo');
+    console.error((error as Error).name);
+    console.error((error as Error).message);
+}
 console.log('fim');
