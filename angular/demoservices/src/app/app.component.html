@@ -1,0 +1,8 @@
+<h1>{{ titulo.toUpperCase() }}</h1>
+@for (usuario of usuarios; track usuario.id) {
+  <p>
+    id = {{usuario.id}}
+    nome = {{usuario.nome}}
+    @if (usuario.dataNascimento) { data = {{usuario.dataNascimento.toLocaleDateString()}} }
+  </p>
+}
