@@ -1,1 +1,9 @@
-<p>cadastro-template-driven works!</p>
+<h2>Cadastro Pessoa</h2>
+
+<form #cadastro="ngForm" (ngSubmit)="onSubmit()">
+    <label for="txtNome">Nome</label>
+    <input type="text" id="txtNome" [(ngModel)]="pessoa.nome" name="nome" required maxlength="60">
+    <label for="txtIdade">Idade</label>
+    <input type="number" id="txtIdade" [(ngModel)]="pessoa.idade" name="idade" required min="0">
+    <button type="submit" [disabled]="!cadastro.valid">Enviar</button>
+</form>
