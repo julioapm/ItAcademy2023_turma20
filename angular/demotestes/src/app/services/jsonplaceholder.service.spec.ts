@@ -2,9 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { JsonplaceholderService, Post } from './jsonplaceholder.service';
 import { RestapiService } from './restapi.service';
-import { of } from 'rxjs';
 import { WebServiceError } from './util';
-import { asyncError } from '../testing/async-observable-helpers';
+import { asyncError, asyncData } from '../testing/async-observable-helpers';
 
 //Teste unitário
 //Com suporte adicional da API de testes do Angular
@@ -37,7 +36,7 @@ describe('JsonplaceholderService', () => {
       title: 'title',
       body: 'body',
     };
-    restapiServiceSpy.get.and.returnValue(of(expectedPost));
+    restapiServiceSpy.get.and.returnValue(asyncData(expectedPost));
     service.getPostById(id).subscribe({
       next: (value) => {
         expect(value).toEqual(expectedPost);

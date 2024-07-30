@@ -1,0 +1,10 @@
+<div>
+    <h3>Calculadora</h3>
+    <label for="valor1Input">X:</label>
+    <input type="number" id="valor1Input" [(ngModel)]="valor1"/>
+    <label for="valor2Input">Y:</label>
+    <input type="number" id="valor2Input" [(ngModel)]="valor2"/>
+    <button (click)="onSomarButtonClick()" id="somarButton">Somar</button>
+    <label for="resultadoSpan">Resultado:</label>
+    <span id="resultadoSpan">{{resultado}}</span>
+</div>
