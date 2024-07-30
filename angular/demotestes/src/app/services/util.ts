@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { throwError } from "rxjs";
 
-type WebServiceError = {
+export type WebServiceError = {
     erro: any,
     mensagem: string,
     mensagemOriginal: string,
